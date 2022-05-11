@@ -49,24 +49,24 @@ def scrape(webpage):
         message = client.messages \
             .create(
             body=f'{areaForecast[:last_break]}',
-            from_=config.TWILIO_PHONE_NUMBER,
-            to=config.PHONE_NUMBER
+            from_=os.environ.get('TWILIO_PHONE_NUMBER'),
+            to=os.environ.get('PHONE_NUMBER')
             )
         #print(message.sid)
 
         message = client.messages \
             .create(
             body=f'{areaForecast[last_break:]}',
-            from_=config.TWILIO_PHONE_NUMBER,
-            to=config.PHONE_NUMBER
+            from_=os.environ.get('TWILIO_PHONE_NUMBER'),
+            to=os.environ.get('PHONE_NUMBER')
         )
         #print(message.sid)
     else:
         message = client.messages \
             .create(
             body=f'{areaForecast}',
-            from_=config.TWILIO_PHONE_NUMBER,
-            to=config.PHONE_NUMBER
+            from_=os.environ.get('TWILIO_PHONE_NUMBER'),
+            to=os.environ.get('PHONE_NUMBER')
         )
         #print(message.sid)
 
